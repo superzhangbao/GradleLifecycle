@@ -1,5 +1,6 @@
 //引用groovy插件，编译插件工程中的代码
 apply plugin:"groovy"
+apply plugin:'java-gradle-plugin'
 
 //声明仓库的地址
 repositories {
@@ -12,6 +13,15 @@ dependencies {
     implementation localGroovy()
 }
 
+gradlePlugin {
+    plugins{
+        tag{
+            id = 'com.hikvision.router1.gradle'
+            implementationClass  = 'com.hikvision.router1.gradle.RouterPlugin'
+        }
+    }
+}
+
 apply plugin: 'maven'
 
 //配置maven插件中的uploadArchives任务
@@ -21,11 +31,11 @@ uploadArchives {
             //设置发布路径
             repository(url:uri('../repo')) {
                 //设置groupId，通常是包名
-                pom.groupId = 'com.hikvision.router'
+                pom.groupId = 'com.hikvision.router1'
                 //设置artifactId，为当前插件的名称
                 pom.artifactId = 'router-gradle-plugin'
                 //设置插件版本号
-                pom.version = '2.1.0'
+                pom.version = '2.1.6'
             }
         }
     }

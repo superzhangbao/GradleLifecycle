@@ -1,12 +1,12 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.hikvision.router'
+    id 'com.hikvision.router1.gradle'
     id 'kotlin-kapt'
 }
 
 router {
-    wikiDir getRootDir().absolutePath
+    wikiDir "这是我设置的参数"
 }
 
 android {
